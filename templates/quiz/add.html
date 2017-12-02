@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Quiz</title>
+</head>
+<body>
+
+    <form action="{{ url_for('add2_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>Subject:
+        <dd><input type=text size=30 name=subject>
+        <dt>Number of questions:
+        <dd><input type=text size=30 name=number_of_questions>
+          <dt>Date:
+        <dd><input type="date" size="30" min="1995-01-01" max="2050-12-31" name="date_of_quiz">
+          <span class="validity"></span>
+          <dd><input type=submit value=Add>
+      </dl>
+    </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+</body>
+</html>

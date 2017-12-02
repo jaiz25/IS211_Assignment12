@@ -1,0 +1,67 @@
+<html>
+  <head>
+      <title>Dashboard page</title>
+  </head>
+
+<body>
+<a href="{{ url_for('logout') }}">log out</a>
+    <div>
+    <style>
+        .tftable {font-size:12px;color:#333333;display:inline-block;width:400px;border-width: 1px;border-color:
+        #729ea5;border-collapse: collapse; margin-right:20px;}
+        .tftable th {font-size:12px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style:
+        solid;border-color: #729ea5;text-align:left;width:400px;}
+        .tftable tr {background-color:#d4e3e5;width:400px;}
+        .tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color:
+        #729ea5;width:400px;} .tftable tr:hover {background-color:#ffffff;}
+    </style>
+    <table class="tftable" border="1">
+        <tr>
+            <td align="center" colspan="4"><B>STUDENTS</B></td>
+        </tr>
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Scores</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }} </td>
+
+
+            <td> <a href="{{ url_for('student_id', id = item[0]) }}">view scores</a></td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <table class="tftable" border="1">
+        <tr>
+            <td align="center" colspan="4"><B>QUIZZES</B></td>
+        </tr>
+        <tr>
+            <th>Quiz ID</th>
+            <th>Subject</th>
+            <th>No. of questions</th>
+            <th>Date</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }} </td>
+            <td>{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+        </tr>
+    </table>
+    </div>
+    <a href="{{ url_for('student_add') }}">Add Student</a>
+    <a href="{{ url_for('quiz_add') }}">Add Quiz</a>
+    <a href="{{ url_for('results_add') }}">Add Quiz Results</a>
+</body>
+

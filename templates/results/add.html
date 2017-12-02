@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+
+    <form action="{{ url_for('add3_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>Student:
+         <select name="student">
+
+            <option value="none">Select an option</option>
+            {% for r in row %}
+            <option value="{{ r[0] }}">{{ r[1] }} {{ r[2] }}</option>
+            {% endfor %}
+        </select>
+        <dt>Subject:
+          <select name="subject">
+            <option value="none">Select an option</option>
+            {% for r2 in row2 %}
+              <option value="{{ r2[0] }}">{{ r2[1] }}</option>
+            {% endfor %}
+          </select>
+        <dt>Score:
+        <dd><input type=text size=30 name="score"></input>
+          <dd><input type=submit value=Add>
+      </dl>
+    </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+        <a href="{{ url_for('results_add') }}">Try again</a>
+      {% endif %}
+</body>
+</html>
